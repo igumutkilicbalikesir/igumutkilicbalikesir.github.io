@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Umut Kılıç · Kaynaklar</title>
-<meta name="description" content="@umutkilicbalikesir videolarındaki tüm ücretsiz PDF rehberler, haftalık borsa raporu ve BIST TradingView göstergeleri tek sayfada.">
+<meta name="description" content="@umutkilicbalikesir videolarındaki tüm ücretsiz rehberler, hesap araçları, haftalık rapor ve BIST TradingView göstergeleri; en yeni en üstte.">
 <meta property="og:title" content="Umut Kılıç · Kaynaklar">
-<meta property="og:description" content="Videolardaki PDF rehberler, haftalık rapor ve TradingView göstergeleri. Ücretsiz.">
+<meta property="og:description" content="Videolardaki ücretsiz rehberler, hesap araçları ve TradingView göstergeleri.">
 <meta property="og:image" content="https://igumutkilicbalikesir.github.io/img/avatar.png">
 <meta property="og:url" content="https://igumutkilicbalikesir.github.io/">
 <meta name="theme-color" content="#0B1426">
@@ -22,114 +22,237 @@ html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--zemin); color: var(--beyaz);
   font-family: "Avenir Next", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased; line-height: 1.45; }
-.sar { max-width: 640px; margin: 0 auto; padding: 28px 16px 48px; }
-header { text-align: center; margin-bottom: 28px; }
-header img { width: 96px; height: 96px; border-radius: 50%; border: 3px solid var(--sari); }
-header h1 { font-size: 26px; font-weight: 800; margin: 12px 0 2px; letter-spacing: .2px; }
-header .alt { color: var(--acikgri); font-size: 15px; }
-.ig { display: inline-block; margin-top: 12px; color: var(--sari); text-decoration: none; font-weight: 700; font-size: 15px; }
-.hap { display: inline-block; background: var(--sari); color: var(--zemin); font-weight: 800; font-size: 13px;
-  padding: 6px 14px; border-radius: 999px; letter-spacing: .6px; }
-h2 { font-size: 20px; font-weight: 800; margin: 34px 0 6px; }
-h2 + .not { color: var(--gri); font-size: 14px; margin: 0 0 14px; }
+.sar { max-width: 680px; margin: 0 auto; padding: 24px 16px 48px; }
+header { text-align: center; margin-bottom: 18px; }
+header img { width: 92px; height: 92px; border-radius: 50%; border: 3px solid var(--sari); }
+header h1 { font-size: 26px; font-weight: 800; margin: 10px 0 2px; }
+header .alt { color: var(--acikgri); font-size: 15px; max-width: 460px; margin: 0 auto; }
+.takip { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; background: var(--sari); color: var(--zemin);
+  font-weight: 800; text-decoration: none; padding: 11px 20px; border-radius: 999px; font-size: 15px; }
+.takip-not { color: var(--gri); font-size: 12px; margin-top: 8px; }
+.sayac { display: flex; justify-content: center; gap: 18px; margin: 16px 0 6px; color: var(--acikgri); font-size: 13px; }
+.sayac b { display: block; color: var(--beyaz); font-size: 20px; }
+.suzgec { position: sticky; top: 0; z-index: 5; background: rgba(11,20,38,.96); backdrop-filter: blur(6px);
+  padding: 10px 0 8px; margin: 8px 0 12px; border-bottom: 1px solid var(--lacivert2); }
+.ara { width: 100%; background: var(--lacivert); border: 1px solid var(--kenar); color: var(--beyaz); border-radius: 12px;
+  padding: 11px 14px; font-size: 15px; outline: none; }
+.ara:focus { border-color: var(--sari); }
+.cipler { display: flex; gap: 6px; overflow-x: auto; padding: 8px 0 2px; scrollbar-width: none; }
+.cipler::-webkit-scrollbar { display: none; }
+.cip { flex: 0 0 auto; background: var(--lacivert); color: var(--acikgri); border: 1px solid var(--kenar); border-radius: 999px;
+  padding: 6px 12px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; }
+.cip.secili { background: var(--sari); color: var(--zemin); border-color: var(--sari); }
+.cip.tum { color: var(--beyaz); }
 .kart { display: flex; gap: 14px; background: var(--lacivert); border: 1px solid var(--kenar); border-radius: 16px;
-  padding: 14px; margin-bottom: 14px; scroll-margin-top: 16px; transition: border-color .3s, box-shadow .3s; }
-.kart:target { border-color: var(--sari); box-shadow: 0 0 0 3px rgba(255,209,102,.25); }
-.kapak { flex: 0 0 104px; }
-.kapak img { width: 104px; height: auto; border-radius: 8px; display: block; background: var(--lacivert2); }
+  padding: 14px; margin-bottom: 14px; scroll-margin-top: 130px; transition: border-color .3s, box-shadow .3s; }
+.kart:target, .capa:target + .kart { border-color: var(--sari); box-shadow: 0 0 0 3px rgba(255,209,102,.25); }
+.capa { display: block; position: relative; top: -130px; }
+.kart.yakinda { background: transparent; border-style: dashed; }
+.kapak { flex: 0 0 104px; height: 147px; border-radius: 8px; overflow: hidden; background: var(--lacivert2); display: block; }
+.kapak img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.kapak.bos { background: repeating-linear-gradient(45deg, var(--lacivert2), var(--lacivert2) 8px, var(--lacivert) 8px, var(--lacivert) 16px); }
 .govde { min-width: 0; flex: 1; }
-.seri { color: var(--turuncu); font-size: 12px; font-weight: 800; letter-spacing: .8px; }
-.yeni { background: var(--sari); color: var(--zemin); border-radius: 6px; padding: 1px 6px; margin-left: 4px; font-size: 11px; }
-.kart h3, .yakinda h3 { font-size: 18px; font-weight: 800; margin: 4px 0 4px; }
-.kart p, .yakinda p { color: var(--acikgri); font-size: 14px; margin: 0 0 8px; }
-.meta { color: var(--gri); font-size: 12px; margin-bottom: 10px; }
-.meta b { color: var(--sari); }
-.dugme { display: inline-block; background: var(--sari); color: var(--zemin); font-weight: 800; text-decoration: none;
-  font-size: 15px; padding: 10px 18px; border-radius: 10px; }
-.dugme.ikincil { background: transparent; color: var(--sari); border: 2px solid var(--sari); }
-.yakinda { border: 1px dashed var(--kenar); border-radius: 16px; padding: 14px; margin-bottom: 14px; }
+.seri { color: var(--turuncu); font-size: 12px; font-weight: 800; letter-spacing: .7px; }
 .yakinda .seri { color: var(--gri); }
-.gosterge { background: var(--lacivert); border: 1px solid var(--kenar); border-radius: 16px; padding: 16px; }
-.gosterge ul { list-style: none; padding: 0; margin: 0 0 14px; }
-.gosterge li { padding: 8px 0; border-bottom: 1px solid var(--lacivert2); }
-.gosterge li:last-child { border-bottom: 0; }
-.gosterge li b { display: block; font-size: 15px; }
-.gosterge li span { color: var(--acikgri); font-size: 13px; }
-.gosterge .dugmeler { display: flex; gap: 10px; flex-wrap: wrap; }
-footer { margin-top: 40px; color: var(--gri); font-size: 12px; text-align: center; }
+.yeni { background: var(--sari); color: var(--zemin); border-radius: 6px; padding: 1px 6px; margin-left: 4px; font-size: 11px; }
+.kart h3 { font-size: 18px; font-weight: 800; margin: 4px 0; }
+.kart p { color: var(--acikgri); font-size: 14px; margin: 0 0 8px; }
+.meta { color: var(--gri); font-size: 12px; margin-bottom: 6px; }
+.etiket { color: var(--acikgri); }
+.kelime { color: var(--gri); font-size: 12px; margin-bottom: 10px; }
+.kelime b { color: var(--sari); }
+.dugmeler { display: flex; gap: 8px; flex-wrap: wrap; }
+.dugme { display: inline-block; background: var(--sari); color: var(--zemin); font-weight: 800; text-decoration: none;
+  font-size: 14px; padding: 9px 15px; border-radius: 10px; }
+.dugme.ikincil { background: transparent; color: var(--sari); border: 2px solid var(--sari); padding: 7px 13px; }
+.dugme.pasif { background: var(--lacivert2); color: var(--gri); }
+.bos-sonuc { display: none; color: var(--gri); text-align: center; padding: 24px 0; }
+.cagri { background: linear-gradient(135deg, var(--lacivert2), var(--lacivert)); border: 1px solid var(--kenar); border-radius: 16px;
+  padding: 18px; text-align: center; margin: 26px 0 10px; }
+.cagri h2 { font-size: 19px; margin: 0 0 6px; }
+.cagri p { color: var(--acikgri); font-size: 14px; margin: 0 0 12px; }
+footer { margin-top: 30px; color: var(--gri); font-size: 12px; text-align: center; }
 footer a { color: var(--acikgri); }
-@media (max-width: 380px) { .kapak { flex-basis: 84px; } .kapak img { width: 84px; } }
+@media (max-width: 400px) { .kapak { flex-basis: 84px; height: 119px; } .dugme { font-size: 13px; } }
 </style>
 </head>
 <body>
 <div class="sar">
   <header>
-    <img src="img/avatar.png" alt="Umut Kılıç" width="96" height="96">
+    <img src="img/avatar.png" alt="Umut Kılıç" width="92" height="92">
     <h1>Umut Kılıç</h1>
-    <div class="alt">Borsa &amp; Finans · BIST üzerine sade anlatım</div>
-    <a class="ig" href="https://www.instagram.com/umutkilicbalikesir/">@umutkilicbalikesir</a>
+    <div class="alt">Borsa, para ve strateji: veriyle, sade anlatım. Videolarımdaki her rehber, araç ve gösterge burada, ücretsiz.</div>
+    <a class="takip" href="https://www.instagram.com/umutkilicbalikesir/" target="_blank" rel="noopener">Instagram'da takip et · @umutkilicbalikesir</a>
+    <div class="takip-not">Yeni rehberler önce takipçilere duyuruluyor.</div>
+    <div class="sayac"><span><b>7</b>hazır kaynak</span><span><b>3</b>hazırlanıyor</span><span><b>0 TL</b>üyelik yok</span></div>
   </header>
 
-  <span class="hap">ÜCRETSİZ KAYNAKLAR</span>
-  <h2>Videodaki rehberi mi arıyorsun?</h2>
-  <p class="not">Videoların sonunda bahsettiğim PDF'lerin hepsi burada. En yenisi en üstte; kayıt ya da üyelik yok.</p>
-  
-    <article class="kart" id="haftalik-rapor">
-      <a class="kapak" href="pdf/haftalik-rapor-2026-10-23.pdf" target="_blank" rel="noopener"><img src="img/haftalik-rapor-2026-10-23.jpg" alt="Altı hafta, altı kırmızı mum kapağı" loading="lazy" width="480" height="679"></a>
+  <div class="suzgec">
+    <input class="ara" type="search" placeholder="Ara: altın, bilanço, trend, fon…" aria-label="Kaynaklarda ara">
+    <div class="cipler" aria-label="Tür"><button class="cip tum secili" data-tur="">Tümü</button><button class="cip" data-tur="rehber">Rehber PDF</button><button class="cip" data-tur="gosterge">Gösterge</button><button class="cip" data-tur="arac">Hesap aracı</button><button class="cip" data-tur="rapor">Rapor</button></div>
+    <div class="cipler" aria-label="Konu"><button class="cip tum secili" data-konu="">Her konu</button><button class="cip" data-konu="Hisse seçimi">Hisse seçimi</button><button class="cip" data-konu="Teknik analiz">Teknik analiz</button><button class="cip" data-konu="Bilanço">Bilanço</button><button class="cip" data-konu="Altın-döviz">Altın-döviz</button><button class="cip" data-konu="Fon">Fon</button><button class="cip" data-konu="Konut-kredi">Konut-kredi</button><button class="cip" data-konu="Dolandırıcılık">Dolandırıcılık</button><button class="cip" data-konu="Piyasa">Piyasa</button></div>
+  </div>
+
+  <main id="akis">
+    <span id="gostergeler" class="capa"></span><article class="kart" id="trend-yonu" data-tur="gosterge" data-konu="Teknik analiz|Hisse seçimi"
+      data-ara="trend yönü: yedi tanık gösterge 2/3 trendi 7 ölçütle +1/0/−1 puanlar: yükselen, düşen ya da yatay. fiyat ortalamanın üstünde diye trend yukarı sanmanın önüne geçer. teknik analiz hisse seçimi">
+      <a class="kapak" href="https://igumutkilicbalikesir.github.io/bist-tradingview-gostergeleri/#trend-yonu" target=_blank rel=noopener><img src="img/gosterge-2-kapak.jpg" alt="Trend Yönü: yedi tanık" loading="lazy"></a>
       <div class="govde">
-        <div class="seri">HAFTALIK BORSA RAPORU <span class="yeni">YENİ</span></div>
-        <h3>Altı hafta, altı kırmızı mum</h3>
-        <p>19–23 Ekim 2026 haftası: BIST 100, banka, kur, altın, tahvil ve petrol tek raporda. Haftanın tek cümlesi ve grafikler.</p>
-        <div class="meta">15 sayfa · 0.6 MB · 23 Ekim 2026</div>
-        <a class="dugme" href="pdf/haftalik-rapor-2026-10-23.pdf" target="_blank" rel="noopener">PDF'i aç</a>
+        <div class="seri">GÖSTERGE 2/3 <span class="yeni">YENİ</span></div>
+        <h3>Trend Yönü: yedi tanık</h3>
+        <p>Trendi 7 ölçütle +1/0/−1 puanlar: YÜKSELEN, DÜŞEN ya da YATAY. Fiyat ortalamanın üstünde diye trend yukarı sanmanın önüne geçer.</p>
+        <div class="meta">25 Kasım 2026 · Gösterge · <span class=etiket>Teknik analiz</span> · <span class=etiket>Hisse seçimi</span></div>
+        <div class="kelime">Videodaki kelime: <b>GÖSTERGE</b> · yorumlara yaz, DM'den gelsin</div>
+        <div class="dugmeler"><a class="dugme" href="https://igumutkilicbalikesir.github.io/bist-tradingview-gostergeleri/#trend-yonu" target="_blank" rel="noopener">Kodu al ve kur</a></div>
       </div>
     </article>
-    <article class="kart" id="altin">
-      <a class="kapak" href="pdf/iki-goz-altin-rehberi.pdf" target="_blank" rel="noopener"><img src="img/iki-goz-altin-rehberi.jpg" alt="Altın rehberi kapağı" loading="lazy" width="480" height="679"></a>
+    <article class="kart" id="destek-direnc" data-tur="gosterge" data-konu="Teknik analiz"
+      data-ara="otomatik destek-direnç bölgeleri gösterge 1/3 son 6 ayın en az 2 kez test edilmiş destek ve direnç bölgelerini kendisi çizer; tabloda uzaklık ve ödül/risk. teknik analiz">
+      <a class="kapak" href="https://igumutkilicbalikesir.github.io/bist-tradingview-gostergeleri/#destek-direnc" target=_blank rel=noopener><img src="img/destek-direnc.jpg" alt="Otomatik destek-direnç bölgeleri" loading="lazy"></a>
+      <div class="govde">
+        <div class="seri">GÖSTERGE 1/3 </div>
+        <h3>Otomatik destek-direnç bölgeleri</h3>
+        <p>Son 6 ayın en az 2 kez test edilmiş destek ve direnç bölgelerini kendisi çizer; tabloda uzaklık ve ödül/risk.</p>
+        <div class="meta">3 Kasım 2026 · Gösterge · <span class=etiket>Teknik analiz</span></div>
+        <div class="kelime">Videodaki kelime: <b>GÖSTERGE</b> · yorumlara yaz, DM'den gelsin</div>
+        <div class="dugmeler"><a class="dugme" href="https://igumutkilicbalikesir.github.io/bist-tradingview-gostergeleri/#destek-direnc" target="_blank" rel="noopener">Kodu al ve kur</a><a class="dugme ikincil" href="https://www.instagram.com/reel/DfSkg5BMHuH/" target="_blank" rel="noopener">Videoyu izle</a></div>
+      </div>
+    </article>
+    <article class="kart" id="guven-skoru" data-tur="gosterge" data-konu="Teknik analiz|Bilanço"
+      data-ara="güven skoru + şirket olayları gösterge 3/3 · videosu yakında 9 faktörlü 0–100 orta vade skoru; grafikte bilanço, temettü, bölünme ve haber işaretleri. teknik analiz bilanço">
+      <a class="kapak" href="https://igumutkilicbalikesir.github.io/bist-tradingview-gostergeleri/#guven-skoru-sirket-olaylari" target=_blank rel=noopener><img src="img/guven-skoru-sirket-olaylari.jpg" alt="Güven Skoru + şirket olayları" loading="lazy"></a>
+      <div class="govde">
+        <div class="seri">GÖSTERGE 3/3 · VİDEOSU YAKINDA </div>
+        <h3>Güven Skoru + şirket olayları</h3>
+        <p>9 faktörlü 0–100 orta vade skoru; grafikte bilanço, temettü, bölünme ve haber işaretleri.</p>
+        <div class="meta">1 Kasım 2026 · Gösterge · <span class=etiket>Teknik analiz</span> · <span class=etiket>Bilanço</span></div>
+        
+        <div class="dugmeler"><a class="dugme" href="https://igumutkilicbalikesir.github.io/bist-tradingview-gostergeleri/#guven-skoru-sirket-olaylari" target="_blank" rel="noopener">Kodu al ve kur</a></div>
+      </div>
+    </article>
+    <article class="kart" id="altin" data-tur="rehber" data-konu="Altın-döviz"
+      data-ara="altın rehberi iki göz · bölüm 1 gram mı, çeyrek mi? ne zaman alınır? altın mı, döviz mi, fon mu? grafik gözüyle ve hesap gözüyle. altın-döviz">
+      <a class="kapak" href="pdf/iki-goz-altin-rehberi.pdf" target=_blank rel=noopener><img src="img/iki-goz-altin-rehberi.jpg" alt="Altın rehberi" loading="lazy"></a>
       <div class="govde">
         <div class="seri">İKİ GÖZ · BÖLÜM 1 </div>
         <h3>Altın rehberi</h3>
         <p>Gram mı, çeyrek mi? Ne zaman alınır? Altın mı, döviz mi, fon mu? Grafik gözüyle ve hesap gözüyle.</p>
-        <div class="meta">12 sayfa · 1.9 MB · 28 Ekim 2026 · videodaki kelime: <b>REHBER</b></div>
-        <a class="dugme" href="pdf/iki-goz-altin-rehberi.pdf" target="_blank" rel="noopener">PDF'i aç</a>
+        <div class="meta">28 Ekim 2026 · Rehber PDF · 12 sayfa · 1.9 MB · <span class=etiket>Altın-döviz</span></div>
+        <div class="kelime">Videodaki kelime: <b>REHBER</b> · yorumlara yaz, DM'den gelsin</div>
+        <div class="dugmeler"><a class="dugme" href="pdf/iki-goz-altin-rehberi.pdf" target="_blank" rel="noopener">PDF&#x27;i aç</a><a class="dugme ikincil" href="https://www.instagram.com/reel/DfC-Rc0iA1u/" target="_blank" rel="noopener">Videoyu izle</a></div>
       </div>
     </article>
-    <article class="kart" id="bilanco">
-      <a class="kapak" href="pdf/bilanco-rontgeni-rehberi.pdf" target="_blank" rel="noopener"><img src="img/bilanco-rontgeni-rehberi.jpg" alt="Bilanço okuma rehberi kapağı" loading="lazy" width="480" height="679"></a>
+    <article class="kart" id="haftalik-rapor" data-tur="rapor" data-konu="Piyasa"
+      data-ara="altı hafta, altı kırmızı mum haftalık borsa raporu 19–23 ekim haftası: bıst 100, banka, kur, altın, tahvil ve petrol tek raporda. piyasa">
+      <a class="kapak" href="pdf/haftalik-rapor-2026-10-23.pdf" target=_blank rel=noopener><img src="img/haftalik-rapor-2026-10-23.jpg" alt="Altı hafta, altı kırmızı mum" loading="lazy"></a>
       <div class="govde">
-        <div class="seri">BİLANÇO RÖNTGENİ </div>
+        <div class="seri">HAFTALIK BORSA RAPORU </div>
+        <h3>Altı hafta, altı kırmızı mum</h3>
+        <p>19–23 Ekim haftası: BIST 100, banka, kur, altın, tahvil ve petrol tek raporda.</p>
+        <div class="meta">23 Ekim 2026 · Rapor · 15 sayfa · 0.6 MB · <span class=etiket>Piyasa</span></div>
+        <div class="kelime">Videodaki kelime: <b>RAPOR</b> · yorumlara yaz, DM'den gelsin</div>
+        <div class="dugmeler"><a class="dugme" href="pdf/haftalik-rapor-2026-10-23.pdf" target="_blank" rel="noopener">PDF&#x27;i aç</a><a class="dugme ikincil" href="https://www.instagram.com/reel/De2ZkV_kctp/" target="_blank" rel="noopener">Videoyu izle</a></div>
+      </div>
+    </article>
+    <article class="kart" id="bilanco" data-tur="rehber" data-konu="Bilanço|Hisse seçimi"
+      data-ara="bilanço okuma rehberi bilanço röntgeni · 7 bölüm bilanço, gelir tablosu, nakit akışı ve oranlar: grafikli, şemalı görsel not kitabı. bilanço hisse seçimi">
+      <a class="kapak" href="pdf/bilanco-rontgeni-rehberi.pdf" target=_blank rel=noopener><img src="img/bilanco-rontgeni-rehberi.jpg" alt="Bilanço okuma rehberi" loading="lazy"></a>
+      <div class="govde">
+        <div class="seri">BİLANÇO RÖNTGENİ · 7 BÖLÜM </div>
         <h3>Bilanço okuma rehberi</h3>
-        <p>Bir şirketin finansal tablolarını okumak için grafikli ve şemalı görsel not kitabı: bilanço, gelir tablosu, nakit akışı, oranlar.</p>
-        <div class="meta">24 sayfa · 1.0 MB · Ekim 2026 · videodaki kelime: <b>RÖNTGEN</b></div>
-        <a class="dugme" href="pdf/bilanco-rontgeni-rehberi.pdf" target="_blank" rel="noopener">PDF'i aç</a>
+        <p>Bilanço, gelir tablosu, nakit akışı ve oranlar: grafikli, şemalı görsel not kitabı.</p>
+        <div class="meta">23 Ekim 2026 · Rehber PDF · 24 sayfa · 1.0 MB · <span class=etiket>Bilanço</span> · <span class=etiket>Hisse seçimi</span></div>
+        <div class="kelime">Videodaki kelime: <b>RÖNTGEN</b> · yorumlara yaz, DM'den gelsin</div>
+        <div class="dugmeler"><a class="dugme" href="pdf/bilanco-rontgeni-rehberi.pdf" target="_blank" rel="noopener">PDF&#x27;i aç</a><a class="dugme ikincil" href="https://www.instagram.com/reel/DehgBc0ijvz/" target="_blank" rel="noopener">Videoyu izle</a></div>
       </div>
     </article>
-    <article class="kart" id="borsa-haritasi">
-      <a class="kapak" href="pdf/borsa-haritasi-rehberi.pdf" target="_blank" rel="noopener"><img src="img/borsa-haritasi-rehberi.jpg" alt="BIST&#x27;te hisse seçimi ve teknik analiz kapağı" loading="lazy" width="480" height="679"></a>
+    <article class="kart yakinda" id="ponzi-44" data-tur="rehber" data-konu="Dolandırıcılık"
+      data-ara="44 yılın ponzi haritası ponzi 44 · hazırlanıyor 1982 bankerlerinden bugüne türkiye&#x27;deki saadet zincirleri ve &#x27;bu bir ponzi mi?&#x27; kontrol listesi. dolandırıcılık">
+      <a class="kapak" href="#"><img src="img/ponzi-44.jpg" alt="44 yılın Ponzi haritası" loading="lazy"></a>
       <div class="govde">
-        <div class="seri">BORSA HARİTASI </div>
-        <h3>BIST&#x27;te hisse seçimi ve teknik analiz</h3>
-        <p>BORSA HARİTASI serisinin görsel not kitabı: hisse seçimi, trend, destek-direnç, RSI ve hacim, şemalarla.</p>
-        <div class="meta">29 sayfa · 4.8 MB · Ekim 2026</div>
-        <a class="dugme" href="pdf/borsa-haritasi-rehberi.pdf" target="_blank" rel="noopener">PDF'i aç</a>
+        <div class="seri">PONZİ 44 · HAZIRLANIYOR </div>
+        <h3>44 yılın Ponzi haritası</h3>
+        <p>1982 bankerlerinden bugüne Türkiye&#x27;deki saadet zincirleri ve &#x27;bu bir Ponzi mi?&#x27; kontrol listesi.</p>
+        <div class="meta">21 Ekim 2026 · Rehber PDF · <span class=etiket>Dolandırıcılık</span></div>
+        
+        <div class="dugmeler"><span class="dugme pasif">Hazırlanıyor</span><a class="dugme ikincil" href="https://www.instagram.com/reel/Dew8vhGDx7I/" target="_blank" rel="noopener">Videoyu izle</a></div>
       </div>
     </article>
-  <div class="yakinda"><div class="seri">İKİ GÖZ · BÖLÜM 2 · YAKINDA</div><h3>Mevduat mı, borsa mı? Hesap tablosu</h3><p>Kendi paranla mevduatın ve borsanın reel getirisini karşılaştıracağın hesap tablosu.</p></div>
+    <article class="kart" id="borsa-haritasi" data-tur="rehber" data-konu="Hisse seçimi|Teknik analiz"
+      data-ara="bıst&#x27;te hisse seçimi ve teknik analiz borsa haritası · 7 bölüm hisse seçimi, trend, destek-direnç, rsı ve hacim, şemalarla. hisse seçimi teknik analiz">
+      <a class="kapak" href="pdf/borsa-haritasi-rehberi.pdf" target=_blank rel=noopener><img src="img/borsa-haritasi-rehberi.jpg" alt="BIST&#x27;te hisse seçimi ve teknik analiz" loading="lazy"></a>
+      <div class="govde">
+        <div class="seri">BORSA HARİTASI · 7 BÖLÜM </div>
+        <h3>BIST&#x27;te hisse seçimi ve teknik analiz</h3>
+        <p>Hisse seçimi, trend, destek-direnç, RSI ve hacim, şemalarla.</p>
+        <div class="meta">8 Ekim 2026 · Rehber PDF · 29 sayfa · 4.8 MB · <span class=etiket>Hisse seçimi</span> · <span class=etiket>Teknik analiz</span></div>
+        
+        <div class="dugmeler"><a class="dugme" href="pdf/borsa-haritasi-rehberi.pdf" target="_blank" rel="noopener">PDF&#x27;i aç</a><a class="dugme ikincil" href="https://www.instagram.com/reel/DePeaJlDUms/" target="_blank" rel="noopener">Videoyu izle</a></div>
+      </div>
+    </article>
+    <article class="kart yakinda" id="evim-kredi" data-tur="arac" data-konu="Konut-kredi"
+      data-ara="evim sistemi mi, banka kredisi mi? hesap aracı evim mi, kredi mi? · hazırlanıyor kendi tutarın, vaden ve faizinle iki yolun gerçek maliyetini yan yana gör. konut-kredi">
+      <div class="kapak bos"></div>
+      <div class="govde">
+        <div class="seri">EVİM Mİ, KREDİ Mİ? · HAZIRLANIYOR </div>
+        <h3>Evim sistemi mi, banka kredisi mi? Hesap aracı</h3>
+        <p>Kendi tutarın, vaden ve faizinle iki yolun gerçek maliyetini yan yana gör.</p>
+        <div class="meta">2 Ekim 2026 · Hesap aracı · <span class=etiket>Konut-kredi</span></div>
+        
+        <div class="dugmeler"><span class="dugme pasif">Hazırlanıyor</span><a class="dugme ikincil" href="https://www.instagram.com/reel/DeAVUZGR6HF/" target="_blank" rel="noopener">Videoyu izle</a></div>
+      </div>
+    </article>
+    <article class="kart yakinda" id="fon-rehberi" data-tur="rehber" data-konu="Fon"
+      data-ara="bir fonu nasıl incelersin? fon · hazırlanıyor bir yılda %926 getiri nasıl olur? getiri, risk, masraf ve serbest fon farkı: fon seçerken bakılacaklar. fon">
+      <div class="kapak bos"></div>
+      <div class="govde">
+        <div class="seri">FON · HAZIRLANIYOR </div>
+        <h3>Bir fonu nasıl incelersin?</h3>
+        <p>Bir yılda %926 getiri nasıl olur? Getiri, risk, masraf ve serbest fon farkı: fon seçerken bakılacaklar.</p>
+        <div class="meta">4 Ağustos 2026 · Rehber PDF · <span class=etiket>Fon</span></div>
+        
+        <div class="dugmeler"><span class="dugme pasif">Hazırlanıyor</span><a class="dugme ikincil" href="https://www.instagram.com/reel/Dbn1yDrK0vd/" target="_blank" rel="noopener">Videoyu izle</a></div>
+      </div>
+    </article>
+    <div class="bos-sonuc">Bu süzgeçle eşleşen kaynak yok.</div>
+  </main>
 
-  <h2 id="gostergeler">TradingView göstergeleri</h2>
-  <p class="not">BIST hisseleri için yazdığım 3 açık kaynak Pine Script göstergesi. Kopyala-yapıştır, 1 dakikada kurulur.</p>
-  <div class="gosterge">
-    <ul><li><b>UK · Otomatik Destek / Direnç</b><span>Son 6 ayın en az 2 kez test edilmiş destek ve direnç bölgelerini otomatik çizer.</span></li><li><b>UK · Trend Yönü</b><span>7 ölçütle trendi puanlar: YÜKSELEN, DÜŞEN ya da YATAY.</span></li><li><b>UK · Güven Skoru + Şirket Olayları</b><span>9 faktörlü 0–100 orta vade skoru; bilanço, temettü, bölünme ve haber işaretleri.</span></li></ul>
-    <div class="dugmeler">
-      <a class="dugme" href="https://igumutkilicbalikesir.github.io/bist-tradingview-gostergeleri/">Kurulum ve kodlar</a>
-      <a class="dugme ikincil" href="https://github.com/igumutkilicbalikesir/bist-tradingview-gostergeleri">GitHub</a>
-    </div>
-  </div>
+  <section class="cagri">
+    <h2>Sıradaki rehber ilk sana gelsin</h2>
+    <p>Her yeni video bir kaynakla geliyor. Takip edersen hazırlananlar çıktığında akışına düşer.</p>
+    <a class="takip" href="https://www.instagram.com/umutkilicbalikesir/" target="_blank" rel="noopener">Takip et</a>
+  </section>
 
   <footer>
-    Genel eğitim amaçlıdır, yatırım tavsiyesi değildir.<br>
-    Yeni içerikler için <a href="https://www.instagram.com/umutkilicbalikesir/">Instagram'da takip et</a> · <a href="gizlilik.html">Gizlilik</a>
+    Genel eğitim amaçlıdır, yatırım tavsiyesi değildir. Göstergelerin kodu açık kaynak:
+    <a href="https://github.com/igumutkilicbalikesir/bist-tradingview-gostergeleri">GitHub</a>.<br>
+    <a href="https://www.instagram.com/umutkilicbalikesir/">Instagram</a> · <a href="gizlilik.html">Gizlilik</a>
   </footer>
 </div>
+<script>
+(function () {
+  var tur = "", konu = "", ara = document.querySelector(".ara");
+  var kartlar = [].slice.call(document.querySelectorAll(".kart")), bos = document.querySelector(".bos-sonuc");
+  function uygula() {
+    var q = (ara.value || "").toLocaleLowerCase("tr"), n = 0;
+    kartlar.forEach(function (k) {
+      var ok = (!tur || k.dataset.tur === tur) && (!konu || k.dataset.konu.split("|").indexOf(konu) >= 0)
+        && (!q || k.dataset.ara.indexOf(q) >= 0);
+      k.style.display = ok ? "" : "none"; if (ok) n++;
+    });
+    bos.style.display = n ? "none" : "block";
+  }
+  document.querySelectorAll(".cipler").forEach(function (grup) {
+    grup.addEventListener("click", function (ev) {
+      var b = ev.target.closest(".cip"); if (!b) return;
+      grup.querySelectorAll(".cip").forEach(function (x) { x.classList.remove("secili"); });
+      b.classList.add("secili");
+      if ("tur" in b.dataset) tur = b.dataset.tur; else konu = b.dataset.konu;
+      uygula();
+    });
+  });
+  ara.addEventListener("input", uygula);
+})();
+</script>
 </body>
 </html>
