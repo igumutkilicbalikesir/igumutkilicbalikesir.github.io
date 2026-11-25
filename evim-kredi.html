@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evim mi, Kredi mi? · Hesap aracı</title>
+<meta name="description" content="Tasarruf finansmanı (evim sistemi) ile banka kredisini kendi rakamlarınla karşılaştır: toplam ödeme, bugünkü değer, teslim zamanı ve bekleme süresindeki fiyat artışı.">
+<meta property="og:title" content="Evim sistemi mi, banka kredisi mi? Hesap aracı">
+<meta property="og:image" content="https://igumutkilicbalikesir.github.io/img/avatar.png">
+<meta name="theme-color" content="#0B1426">
+<link rel="icon" href="img/avatar.png">
+<style>
+:root { --zemin:#0B1426; --lacivert:#14213D; --lacivert2:#1D2D50; --kenar:#2E4470; --sari:#FFD166; --turuncu:#F4A261; --yesil:#2A9D8F; --kirmizi:#E5484D; --mavi:#7FDBFF; --gri:#8D99AE; --acikgri:#C9D2E0; --beyaz:#fff; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--zemin); color:var(--beyaz); font-family:"Avenir Next",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; -webkit-font-smoothing:antialiased; line-height:1.45; }
+.sar { max-width:720px; margin:0 auto; padding:22px 16px 48px; }
+a { color:var(--sari); }
+.geri { font-size:14px; text-decoration:none; color:var(--acikgri); }
+h1 { font-size:28px; font-weight:800; margin:14px 0 6px; line-height:1.15; }
+h1 span { color:var(--sari); }
+.alt { color:var(--acikgri); font-size:15px; margin:0 0 18px; }
+.uyari { background:var(--lacivert); border-left:5px solid var(--kirmizi); border-radius:12px; padding:12px 14px; font-size:14px; color:var(--acikgri); margin-bottom:18px; }
+.uyari b { color:var(--beyaz); }
+fieldset { border:1px solid var(--kenar); border-radius:16px; padding:14px; margin:0 0 14px; background:var(--lacivert); }
+legend { padding:0 8px; font-weight:800; font-size:14px; letter-spacing:.6px; }
+.l-ortak legend { color:var(--acikgri); } .l-evim legend { color:var(--sari); } .l-kredi legend { color:var(--mavi); } .l-eko legend { color:var(--turuncu); }
+.izgara { display:grid; grid-template-columns:1fr 1fr; gap:10px 12px; }
+label { display:block; font-size:13px; color:var(--acikgri); }
+label small { display:block; color:var(--gri); font-size:11.5px; margin-top:2px; }
+input, select { width:100%; margin-top:4px; background:var(--zemin); border:1px solid var(--kenar); color:var(--beyaz); border-radius:10px; padding:9px 10px; font-size:15px; font-family:inherit; }
+input:focus, select:focus { outline:none; border-color:var(--sari); }
+.sonuc { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:18px 0 10px; }
+.kutu { border-radius:16px; padding:14px; background:var(--lacivert); border:2px solid var(--kenar); }
+.kutu.evim { border-color:var(--sari); } .kutu.kredi { border-color:var(--mavi); }
+.kutu h3 { margin:0 0 8px; font-size:15px; letter-spacing:.6px; }
+.kutu.evim h3 { color:var(--sari); } .kutu.kredi h3 { color:var(--mavi); }
+.satir { display:flex; justify-content:space-between; gap:8px; font-size:13.5px; padding:5px 0; border-bottom:1px solid var(--lacivert2); }
+.satir:last-child { border-bottom:0; }
+.satir span:first-child { color:var(--acikgri); }
+.satir b { font-variant-numeric:tabular-nums; text-align:right; }
+.satir.buyuk b { font-size:17px; }
+.karar { background:linear-gradient(135deg,var(--lacivert2),var(--lacivert)); border:1px solid var(--kenar); border-radius:16px; padding:16px; margin:6px 0 16px; font-size:15px; }
+.karar b { color:var(--sari); }
+.not { color:var(--gri); font-size:12.5px; }
+.grafik { background:var(--lacivert); border:1px solid var(--kenar); border-radius:16px; padding:12px; margin-bottom:16px; }
+.grafik h3 { font-size:14px; margin:0 0 6px; color:var(--acikgri); }
+.lejant { display:flex; gap:14px; font-size:12px; color:var(--acikgri); margin-top:6px; flex-wrap:wrap; }
+.lejant i { display:inline-block; width:12px; height:4px; border-radius:2px; margin-right:5px; vertical-align:middle; }
+details { background:var(--lacivert); border:1px solid var(--kenar); border-radius:14px; padding:12px 14px; margin-bottom:10px; }
+summary { cursor:pointer; font-weight:800; font-size:15px; }
+details p, details li { color:var(--acikgri); font-size:14px; }
+.takip { display:inline-block; background:var(--sari); color:var(--zemin); font-weight:800; text-decoration:none; padding:11px 18px; border-radius:999px; margin-top:6px; }
+footer { margin-top:26px; color:var(--gri); font-size:12px; text-align:center; }
+@media (max-width:520px) { .izgara, .sonuc { grid-template-columns:1fr; } h1 { font-size:24px; } }
+</style>
+</head>
+<body>
+<div class="sar">
+  <a class="geri" href="./#evim-kredi">← Tüm kaynaklar</a>
+  <h1>Evim sistemi mi, <span>banka kredisi mi?</span></h1>
+  <p class="alt">Kendi rakamlarını gir; iki yolun toplam maliyetini, <b>bugünkü değerini</b> ve araca/eve <b>ne zaman</b> sahip olacağını yan yana gör. Alanlardaki rakamlar örnektir.</p>
+
+  <div class="uyari"><b>En sık yapılan hata:</b> "Faizsiz olduğu için ucuz" sanmak. Tasarruf finansmanında finansman tutarın TL olarak sabittir ve teslimi beklersin. Beklerken araç ya da ev pahalanırsa <b>aradaki farkı sen ödersin.</b> Banka kredisinde faiz ödersin ama mala bugün sahip olursun. Doğru cevap, varsayımlarına göre değişir.</div>
+
+  <fieldset class="l-ortak"><legend>NE ALIYORSUN?</legend>
+    <div class="izgara">
+      <label>Ne için<select id="tur"><option value="tasit">Taşıt (benzinli/dizel/hibrit)</option><option value="elektrik">Taşıt (yerli elektrikli)</option><option value="konut">Konut</option></select></label>
+      <label>Bugünkü fiyatı (TL)<input id="fiyat" type="text" inputmode="numeric" value="1.500.000"></label>
+    </div>
+  </fieldset>
+
+  <fieldset class="l-evim"><legend>TASARRUF FİNANSMANI (EVİM SİSTEMİ)</legend>
+    <div class="izgara">
+      <label>Sözleşme (finansman) tutarı<input id="sozlesme" type="text" inputmode="numeric" value="1.500.000"><small>Teslimde eline geçecek, TL olarak sabit tutar</small></label>
+      <label>Vade (ay)<input id="vade" type="number" value="60" min="6" max="240"></label>
+      <label>Organizasyon ücreti (%)<input id="org" type="number" value="8" step="0.1" min="0"><small>Sözleşmende yazan oranı gir; şirkete göre değişir</small></label>
+      <label>Peşinat (TL)<input id="pesinat" type="text" inputmode="numeric" value="0"><small>Yalnızca ilk taksitle alınabilir</small></label>
+      <label>Teslim (tahsisat) ayı<input id="teslim" type="number" placeholder="boş: en erken yasal ay" min="1"><small id="teslimNot">Boş bırakırsan yönetmelikteki en erken ay kullanılır</small></label>
+      <label>Beklerken aylık ek giderin (TL)<input id="bekleme" type="text" inputmode="numeric" value="0"><small>Kira, ulaşım vb. (kredide olmayacak gider)</small></label>
+    </div>
+  </fieldset>
+
+  <fieldset class="l-kredi"><legend>BANKA KREDİSİ</legend>
+    <div class="izgara">
+      <label>Aylık faiz (%)<input id="faiz" type="number" value="3.0" step="0.01" min="0"><small>Bankanın aylık akdi faizi</small></label>
+      <label>Vade (ay)<input id="kvade" type="number" value="12" min="1" max="240"><small id="vadeNot"></small></label>
+      <label>Kredi / değer oranı (%)<input id="ltv" type="number" value="20" min="0" max="100"><small id="ltvNot"></small></label>
+      <label>Vergi (KKDF + BSMV, faizin %'si)<input id="vergi" type="number" value="30" min="0"><small id="vergiNot"></small></label>
+      <label>Dosya masrafı (%)<input id="dosya" type="number" value="0.5" step="0.1" min="0"><small>Anaparanın binde beşi tavan</small></label>
+    </div>
+  </fieldset>
+
+  <fieldset class="l-eko"><legend>EKONOMİ VARSAYIMLARI</legend>
+    <div class="izgara">
+      <label>Fiyatın yıllık artışı (%)<input id="artis" type="number" value="30" step="1"><small>Beklerken aracın/evin ne kadar pahalanacağı</small></label>
+      <label>Paranın yıllık alternatif getirisi (%)<input id="iskonto" type="number" value="40" step="1"><small>Bugünkü değer için (ör. mevduat net getirisi)</small></label>
+    </div>
+  </fieldset>
+
+  <div class="sonuc">
+    <div class="kutu evim"><h3>EVİM SİSTEMİ</h3><div id="sEvim"></div></div>
+    <div class="kutu kredi"><h3>BANKA KREDİSİ</h3><div id="sKredi"></div></div>
+  </div>
+  <div class="karar" id="karar"></div>
+
+  <div class="grafik"><h3>Ay ay toplam ödediğin para (TL)</h3><svg id="cizim" viewBox="0 0 680 240" width="100%" role="img" aria-label="Kümülatif ödeme grafiği"></svg>
+    <div class="lejant"><span><i style="background:var(--sari)"></i>Evim sistemi</span><span><i style="background:var(--mavi)"></i>Banka kredisi</span><span><i style="background:var(--acikgri);height:10px;width:2px"></i>Evimde teslim ayı</span></div>
+  </div>
+
+  <details open><summary>Bu hesap neyi varsayıyor?</summary>
+    <ul>
+      <li><b>Evim:</b> Organizasyon ücreti sözleşmede peşin alınır. Taksitler eşittir ((sözleşme − peşinat) ÷ vade). Teslim ayında finansman tutarı ödenir. O ayki fiyat finansmanı aşıyorsa farkı sen ödersin.</li>
+      <li><b>Kredi:</b> Kredi tutarı = fiyat × kredi/değer oranı. Kalanı bugün peşin ödersin. Taksitler eşittir; vergiler faize eklenir, dosya masrafı peşindir.</li>
+      <li><b>Bugünkü değer:</b> Gelecekteki her ödeme, alternatif getiri oranıyla bugüne indirilir. Böylece "bugün 100 lira" ile "3 yıl sonra 100 lira" aynı sayılmaz.</li>
+      <li>Çekilişli sözleşmeler, taksit artışlı planlar, sigorta/kasko ve tapu-noter masrafları hesaba katılmadı.</li>
+    </ul>
+  </details>
+  <details><summary>Mevzuat ne diyor? (kaynaklı)</summary>
+    <ul>
+      <li><b>Cayma:</b> İmzadan sonraki 14 gün içinde gerekçesiz cayabilirsin; organizasyon ücreti dahil ödediğin her şey 14 gün içinde iade edilir. <i>(6361 sayılı Kanun m. 39/A-3)</i></li>
+      <li><b>Fesih:</b> Tasarruf dönemi bitene kadar feshedebilirsin; <b>organizasyon ücreti iade edilmez</b>, birikimin azami 60 gün içinde iade edilir. <i>(6361 m. 39/A-4; Yönetmelik m. 17/8)</i></li>
+      <li><b>En erken teslim:</b> Müşteri bazlı sözleşmede sözleşme tutarının %40'ı biriktirilmeli ve sözleşme süresinin %40'ı dolmalıdır. 150 gün ve 5 ödeme şartıyla süre şartı, peşinatın sözleşme tutarına oranı kadar kısalabilir. <i>(Tasarruf Finansman Şirketleri Yönetmeliği m. 21/2-3)</i></li>
+      <li><b>Tutar artırımı:</b> Tutarı tasarruf dönemi bitene kadar sen artırabilirsin. Artan kısım için yalnızca organizasyon ücreti ve vergisi alınabilir. <i>(Yönetmelik m. 17/11)</i></li>
+      <li><b>Ek ödeme yasağı:</b> Tasarruf döneminde organizasyon ücreti dışında seni ödeme yükümlülüğü altına sokan bir işlem yapılamaz. <i>(Yönetmelik m. 17/7)</i></li>
+      <li><b>Taşıt kredisi sınırları:</b> BDDK taşıtın fiyatına göre kredi/değer oranı ve vade sınırı koyar. Araçtaki varsayılanlar ikincil kaynaklardaki tablodan alındı; değişebilir, <b>kullanacağın bankaya teyit et.</b></li>
+    </ul>
+    <p class="not">Resmî metinler: <a href="https://www.mevzuat.gov.tr/mevzuatmetin/1.5.6361.pdf">6361 sayılı Kanun</a> · <a href="https://www.mevzuat.gov.tr/MevzuatMetin/yonetmelik/7.5.38500.pdf">Tasarruf Finansman Şirketlerinin Kuruluş ve Faaliyet Esasları Hakkında Yönetmelik</a> (25 Kasım 2026'da okundu).</p>
+  </details>
+
+  <p class="not">Bu araç genel eğitim amaçlıdır; finansman veya yatırım tavsiyesi değildir. Karar vermeden önce sözleşmendeki rakamlarla hesapla ve şirketin/bankanın yazılı ödeme planını iste.</p>
+  <a class="takip" href="https://www.instagram.com/umutkilicbalikesir/" target="_blank" rel="noopener">Videosu ve fazlası: @umutkilicbalikesir</a>
+  <footer><a href="./">Tüm ücretsiz kaynaklar</a> · <a href="gizlilik.html">Gizlilik</a></footer>
+</div>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var TL = new Intl.NumberFormat("tr-TR", { maximumFractionDigits: 0 });
+  function sayi(id) {
+    var el = $(id), v = String(el.value).trim();
+    v = el.type === "number" ? v.replace(",", ".") : v.replace(/\./g, "").replace(",", ".");   // metin alanlarında nokta = binlik
+    var n = parseFloat(v); return isNaN(n) ? 0 : n;
+  }
+  function tl(x) { return TL.format(Math.round(x)) + " TL"; }
+  // BDDK taşıt kredisi bantları (ikincil kaynaklar; bankaya teyit edilmeli): [üst sınır TL, kredi/değer %, azami vade ay]
+  var BANT = {
+    tasit: [[400000, 70, 48], [800000, 50, 36], [1200000, 30, 24], [2000000, 20, 12], [Infinity, 0, 0]],
+    elektrik: [[2500000, 70, 48], [5000000, 50, 36], [6500000, 30, 24], [7500000, 20, 12], [Infinity, 0, 0]]
+  };
+  var elle = { ltv: false, kvade: false, vergi: false };
+  ["ltv", "kvade", "vergi"].forEach(function (id) { $(id).addEventListener("input", function () { elle[id] = true; }); });
+
+  function varsayilanlar() {
+    var tur = $("tur").value, f = sayi("fiyat");
+    if (tur === "konut") {
+      if (!elle.vergi) $("vergi").value = 0;
+      $("vergiNot").textContent = "İlk konutta KKDF ve BSMV yok; değilse bankana sor";
+      $("ltvNot").textContent = "Bankanın sana sunduğu oranı yaz";
+      $("vadeNot").textContent = "";
+      if (!elle.ltv && +$("ltv").value < 50) $("ltv").value = 80;
+      if (!elle.kvade && +$("kvade").value < 60) $("kvade").value = 120;
+      return;
+    }
+    if (!elle.vergi) $("vergi").value = 30;
+    $("vergiNot").textContent = "Bireysel kredide KKDF %15 + BSMV %15";
+    var b = BANT[tur].find(function (x) { return f <= x[0]; });
+    if (!elle.ltv) $("ltv").value = b[1];
+    if (!elle.kvade) $("kvade").value = Math.max(1, b[2]);
+    $("ltvNot").textContent = "BDDK tablosuna göre bu fiyatta en fazla %" + b[1] + " (bankana teyit et)";
+    $("vadeNot").textContent = b[2] ? "Bu fiyatta en fazla " + b[2] + " ay" : "Bu fiyatta taşıt kredisi kullandırılamıyor";
+  }
+
+  function hesapla() {
+    varsayilanlar();
+    var P = sayi("fiyat"), S = sayi("sozlesme"), n = Math.max(1, Math.round(sayi("vade"))), org = sayi("org") / 100;
+    var pes = Math.min(sayi("pesinat"), S), bek = sayi("bekleme");
+    var g = Math.pow(1 + sayi("artis") / 100, 1 / 12) - 1, d = Math.pow(1 + sayi("iskonto") / 100, 1 / 12) - 1;
+    var pv = function (x, ay) { return x / Math.pow(1 + d, ay); };
+
+    // --- Evim: en erken yasal teslim (Yönetmelik m.21/2-3, müşteri bazlı) ---
+    var taksit = (S - pes) / n;
+    var sureSart = Math.max(5, Math.ceil(0.4 * n * (1 - pes / S)));
+    var k = sureSart; while (pes + k * taksit < 0.4 * S - 0.5 && k < n) k++;
+    var enErken = k, girilen = Math.round(sayi("teslim"));
+    var teslim = girilen > 0 ? Math.max(girilen, 1) : enErken;
+    $("teslimNot").textContent = "Yasal en erken: " + enErken + ". ay" + (girilen > 0 && girilen < enErken ? " (girdiğin ay bundan önce olamaz)" : "");
+    if (girilen > 0 && girilen < enErken) teslim = enErken;
+    var Pt = P * Math.pow(1 + g, teslim), fark = Math.max(0, Pt - S);
+    var evAkis = [], toplamE = 0, pvE = 0;
+    evAkis.push(org * S + pes + taksit);              // ay 0: organizasyon ücreti + peşinat + ilk taksit
+    for (var a = 1; a < n; a++) evAkis.push(taksit);
+    for (var a2 = 0; a2 < teslim; a2++) evAkis[a2] = (evAkis[a2] || 0) + bek;
+    evAkis[teslim] = (evAkis[teslim] || 0) + fark;
+    evAkis.forEach(function (x, a) { toplamE += x; pvE += pv(x, a); });
+
+    // --- Kredi ---
+    var ltv = sayi("ltv") / 100, m = Math.max(1, Math.round(sayi("kvade"))), r = sayi("faiz") / 100 * (1 + sayi("vergi") / 100);
+    var L = P * ltv, D = P - L, A = r > 0 ? L * r * Math.pow(1 + r, m) / (Math.pow(1 + r, m) - 1) : L / m;
+    var krAkis = [D + L * sayi("dosya") / 100], toplamK = 0, pvK = 0;
+    for (var b2 = 1; b2 <= m; b2++) krAkis.push(A);
+    krAkis.forEach(function (x, a) { toplamK += x; pvK += pv(x, a); });
+
+    var s = function (et, v, cls) { return '<div class="satir' + (cls ? " " + cls : "") + '"><span>' + et + "</span><b>" + v + "</b></div>"; };
+    $("sEvim").innerHTML = s("Organizasyon ücreti", tl(org * S)) + s("Aylık taksit", tl(taksit) + " × " + n) +
+      s("Teslim", teslim + ". ay") + s("Teslimdeki tahmini fiyat", tl(Pt)) +
+      s("Finansmanın karşılamadığı fark", fark > 0 ? tl(fark) : "yok") + (bek > 0 ? s("Bekleme gideri", tl(bek * teslim)) : "") +
+      s("Toplam ödeme", tl(toplamE), "buyuk") + s("Bugünkü değeriyle", tl(pvE), "buyuk");
+    $("sKredi").innerHTML = (ltv <= 0 ? s("Kredi", "kullandırılamıyor") : "") + s("Bugün peşin", tl(D)) + s("Kredi tutarı", tl(L)) +
+      s("Aylık taksit", tl(A) + " × " + m) + s("Sahip olma", "bugün") + s("Ödenen faiz + vergi", tl(A * m - L)) +
+      s("Toplam ödeme", tl(toplamK), "buyuk") + s("Bugünkü değeriyle", tl(pvK), "buyuk");
+
+    var ucuz = pvE < pvK ? "Evim sistemi" : "Banka kredisi", farkPV = Math.abs(pvE - pvK);
+    $("karar").innerHTML = "Bu varsayımlarla bugünkü değer olarak <b>" + ucuz + "</b> yaklaşık <b>" + tl(farkPV) + "</b> daha ucuz. " +
+      "Evim sisteminde mala <b>" + teslim + " ay sonra</b> sahip oluyorsun" + (fark > 0 ? "; o gün yaklaşık <b>" + tl(fark) + "</b> farkı cebinden ödemen gerekiyor." : ".") +
+      '<br><span class="not">Fiyat artışını ve alternatif getiriyi değiştirerek dene: sonuç en çok bu iki varsayıma bağlı.</span>';
+    ciz(evAkis, krAkis, teslim);
+  }
+
+  function ciz(e, k, teslim) {
+    var svg = $("cizim"), W = 680, H = 240, pl = 64, pr = 10, pt = 10, pb = 28;
+    var N = Math.max(e.length, k.length), kum = function (a) { var t = 0, o = []; for (var i = 0; i < N; i++) { t += a[i] || 0; o.push(t); } return o; };
+    var ce = kum(e), ck = kum(k), mx = Math.max(ce[N - 1], ck[N - 1]) * 1.05 || 1;
+    var X = function (i) { return pl + i / Math.max(1, N - 1) * (W - pl - pr); }, Y = function (v) { return H - pb - v / mx * (H - pt - pb); };
+    var yol = function (a) { return a.map(function (v, i) { return (i ? "L" : "M") + X(i).toFixed(1) + "," + Y(v).toFixed(1); }).join(""); };
+    var g = "";
+    for (var j = 0; j <= 4; j++) { var v = mx * j / 4; g += '<line x1="' + pl + '" x2="' + (W - pr) + '" y1="' + Y(v) + '" y2="' + Y(v) + '" stroke="#1D2D50"/><text x="' + (pl - 6) + '" y="' + (Y(v) + 4) + '" fill="#8D99AE" font-size="10" text-anchor="end">' + TL.format(Math.round(v / 1000)) + 'k</text>'; }
+    for (var a = 0; a < N; a += 12) g += '<text x="' + X(a) + '" y="' + (H - 8) + '" fill="#8D99AE" font-size="10" text-anchor="middle">' + (a / 12) + '. yıl</text>';
+    g += '<line x1="' + X(teslim) + '" x2="' + X(teslim) + '" y1="' + pt + '" y2="' + (H - pb) + '" stroke="#C9D2E0" stroke-dasharray="4 4"/>';
+    g += '<path d="' + yol(ck) + '" fill="none" stroke="#7FDBFF" stroke-width="3"/><path d="' + yol(ce) + '" fill="none" stroke="#FFD166" stroke-width="3"/>';
+    svg.innerHTML = g;
+  }
+
+  $("tur").addEventListener("change", function () { elle.ltv = elle.kvade = elle.vergi = false; });
+  document.querySelectorAll("input, select").forEach(function (el) { el.addEventListener("input", hesapla); el.addEventListener("change", hesapla); });
+  ["fiyat", "sozlesme", "pesinat", "bekleme"].forEach(function (id) {
+    $(id).addEventListener("blur", function () { var n = sayi(id); $(id).value = TL.format(n); });
+  });
+  hesapla();
+})();
+</script>
+</body>
+</html>
